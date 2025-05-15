@@ -2,7 +2,10 @@ import { useState } from "react";
 
 function Todolist() {
   const [inputValue, setInputValue] = useState("");
-  const [inputList, setInputList] = useState([]);
+  const [inputList, setInputList] = useState([
+    "멋사 세션 과제하기",
+    "운동하기",
+  ]);
 
   const inputChange = (e) => {
     setInputValue(e.target.value);
@@ -37,9 +40,12 @@ function Todolist() {
       <ul>
         {inputList.map((item, i) => {
           return (
-            <li key={i}>
+            <li
+              key={i}
+              style={i === 0 ? { color:"gray" ,textDecoration: "line-through" } : {}}
+            >
               {item}
-              <button>수정</button>
+              {/* <button>수정</button> */}
               <button
                 onClick={() => {
                   deleteList(i);
