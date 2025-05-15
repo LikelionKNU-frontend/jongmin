@@ -42,7 +42,11 @@ function Todolist() {
           return (
             <li
               key={i}
-              style={i === 0 ? { color:"gray" ,textDecoration: "line-through" } : {}}
+              style={
+                item === "멋사 세션 과제하기"
+                  ? { color: "gray", textDecoration: "line-through" }
+                  : {}
+              }
             >
               {item}
               {/* <button>수정</button> */}
