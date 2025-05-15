@@ -11,7 +11,13 @@ function Todolist() {
     setInputList([...inputList, inputValue]);
     setInputValue("");
   };
-  const deleteList = (i) => {};
+  const deleteList = (index) => {
+    setInputList(
+      inputList.filter((item, i) => {
+        return index !== i;
+      })
+    );
+  };
 
   return (
     <div>
@@ -22,8 +28,15 @@ function Todolist() {
         {inputList.map((item, i) => {
           return (
             <li key={i}>
-              <span>{item}</span>
-              <button onClick={deleteList(i)}>삭제</button>
+              {item}
+              <button>수정</button>
+              <button
+                onClick={() => {
+                  deleteList(i);
+                }}
+              >
+                삭제
+              </button>
             </li>
           );
         })}
