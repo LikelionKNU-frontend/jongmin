@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Todolist() {
   const [inputValue, setInputValue] = useState("");
@@ -6,6 +6,8 @@ function Todolist() {
     "멋사 세션 과제하기",
     "운동하기",
   ]);
+
+  const inputRef = useRef();
 
   const inputChange = (e) => {
     setInputValue(e.target.value);
@@ -27,11 +29,17 @@ function Todolist() {
     );
   };
 
+  useEffect(() => {
+    // 마운트되자마자 input에 포커스
+    inputRef.current.focus();
+  }, []);
+
   return (
     <div>
       <h1>Todo List</h1>
       <input
         value={inputValue}
+        ref={inputRef}
         onChange={inputChange}
         onKeyDown={(e) => handleEnter(e)}
       ></input>
