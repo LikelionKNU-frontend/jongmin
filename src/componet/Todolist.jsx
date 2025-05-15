@@ -7,10 +7,15 @@ function Todolist() {
   const inputChange = (e) => {
     setInputValue(e.target.value);
   };
+
+  const handleEnter = (e) => {
+    if (e.key === "Enter") addList();
+  };
   const addList = () => {
     setInputList([...inputList, inputValue]);
     setInputValue("");
   };
+
   const deleteList = (index) => {
     setInputList(
       inputList.filter((item, i) => {
@@ -21,7 +26,12 @@ function Todolist() {
 
   return (
     <div>
-      <input value={inputValue} onChange={inputChange}></input>
+      <h1>Todo List</h1>
+      <input
+        value={inputValue}
+        onChange={inputChange}
+        onKeyDown={(e) => handleEnter(e)}
+      ></input>
       <button onClick={addList}>등록</button>
 
       <ul>
